@@ -1,0 +1,183 @@
+<!--
+<p>
+
+  {{title}}
+</p>
+<input type="text" name="firstName" [(ngModel)]="fname">
+<input type="text" name="lastName" [(ngModel)]="lname">
+
+{{fname}} {{lname}}
+
+
+
+<div class="container">
+  <h2>User Data</h2>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+    <div class="form-group">
+      <label>Name</label>
+      <input id="input" type="text" #nameRef="ngModel" maxlength="10" minlength="5" required class="form-control" name="name" ngModel>
+      <div  [hidden]="nameRef.valid" class="alert alert-danger">
+        please enter a name
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" #emailRef="ngModel" required class="form-control" name="email" ngModel>
+      <div [hidden]="emailRef.valid" class="alert alert-danger">
+        please enter email
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label>Street</label>
+      <input type="text" #streetRef="ngModel" required class="form-control" name="street" ngModel>
+      <div [hidden]="streetRef.valid" class="alert alert-danger">
+        please enter street
+      </div>
+    </div>
+
+    <div ngModelGroup="address">
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" class="form-control" name="city" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label>Postal Code</label>
+        <input type="text" #refPincode="ngModel"  required class="form-control" name="Postal Code" ngModel>
+        <div [hidden]="refPincode.valid" class="alert alert-danger">
+          please enter postal code
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button [disabled]="!userForm.valid"type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+
+</div>
+
+
+
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>Add Users using ajax</title>
+
+</head>
+
+<body>
+<div class="body"></div>
+<div class="grad"></div>
+<div class="header">
+  <div>Site<span>Random</span></div>
+</div>
+<br>
+<form id="loginForm"  action="login"method="post" name="submitForm">
+  <div class="login">
+    <div id="sloginFromResponse"></div>
+    <input id="userName"type="text" placeholder="userName" [(ngModel)]="username" name="username" required ><br>
+    <input id="password" type="password" placeholder="password" [(ngModel)]="password"type="password" name="password" required><br>
+    <button class="registerbtn" (click)="login()"  type="submit">Register</button>
+
+  </div>
+  <input type="hidden" name=""
+         value="" />
+
+</form>
+
+
+
+
+</body>
+</html>
+-->
+
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<!--EmployeeDivision-->
+<body>
+<div class="container">
+  <h1 class="text-danger text-center">Welcome to {{ Employee }}!</h1>
+  <hr />
+
+  <div id="fetchbtn">
+    <button type="button" class="btn btn-outline-success" (click)="getAllEmployees();" id="bt">Click me</button>
+
+  </div>
+  <div><small class="text-info">Click the button to fetch the employees from the database!</small></div>
+
+  <div *ngIf="show">
+    <table class="table table-bordered table-hover">
+      <thead>
+      <th>Employee Id</th>
+      <th>Name</th>
+      <th>Phone no.</th>
+      <th>Address</th>
+      <th>Company Logo</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of myresponse">
+        <td>{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.mobile}}</td>
+        <td>{{employee.address}}</td>
+        <td><img src="{{employee.companylogo}}" alt="Company logo" class="img-thumbnail mx-auto d-block" style="width: 30%" /></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--customers division-->
+
+
+
+
+</body>
+<body>
+<div>
+  <div class="container">
+    <h1 class="text-danger text-center">Welcome to {{ Customer }}!</h1>
+    <hr />
+
+    <div id="customerfetchbtn">
+      <button type="button" class="btn btn-outline-success" (click)="getAllCustomers();" id="customerbt">Click me</button>
+{{customersButtonName}}
+    </div>
+    <div><small class="text-info">Click the button to fetch the employees from the database!</small></div>
+
+    <div *ngIf="showCustomers">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <th>Customer Id</th>
+        <th>Name</th>
+        <th>Phone no.</th>
+        <th>Address</th>
+        <th>Company Logo</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let customers of customerResponse">
+          <td>{{customers.id}}</td>
+          <td>{{customers.name}}</td>
+          <td>{{customers.mobile}}</td>
+          <td>{{customers.address}}</td>
+          <td><img src="{{customers.companyLogo}}" alt="Company logo" class="img-thumbnail mx-auto d-block" style="width: 30%" /></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
